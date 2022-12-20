@@ -1,4 +1,4 @@
-FROM docker.io/library/python:3.11-buster
+FROM docker.io/library/python:3.11-bullseye
 
 WORKDIR /app
 
