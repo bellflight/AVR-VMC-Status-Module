@@ -15,14 +15,12 @@
     jetson-gpio                         = { version = "^2.0.20", markers = "sys_platform == 'linux'" }
 
 [tool.poetry.group.dev.dependencies]
-    black            = "^22.10.0"
-    isort            = "^5.10.1"
-    autoflake        = "^1.7.7"
-    pyleft           = "^1.1.0"
-    pyproject-flake8 = "^6.0.0.post1"
+    pre-commit = "^2.21.0"
 
 [tool.pyright]
     typeCheckingMode = "basic"
+    venvPath         = "."
+    venv             = ".venv"
 
 [tool.isort]
     profile = "black"
