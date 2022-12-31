@@ -81,6 +81,13 @@ class StatusModule(MQTTModule):
                 f"Command '{e.cmd}' return with error ({e.returncode}): {e.output}"
             )
 
+    def light_up(self, which_one: int, color: int) -> None:
+        """
+        Set a specific LED to a color
+        """
+        self.pixels[which_one] = color
+        self.pixels.show()
+
     def check_status(self, topic: str) -> None:
         lookup: Dict[str, Tuple[int, int]] = {
             "avr/vio": (VIO_LED, CLR_PURPLE),
@@ -95,17 +102,19 @@ class StatusModule(MQTTModule):
                 self.light_up(*value)
 
     def red_status_all(self) -> None:
+        """
+        Set all LEDs to red
+        """
         for i in range(NUM_PIXELS):
             self.pixels[i] = COLORS[0]
         self.pixels.show()
 
     def all_off(self) -> None:
+        """
+        Turn off all LEDs
+        """
         for i in range(NUM_PIXELS):
             self.pixels[i] = CLR_BLACK
-        self.pixels.show()
-
-    def light_up(self, which_one: int, color: int) -> None:
-        self.pixels[which_one] = color
         self.pixels.show()
 
     def light_status(self, payload: Any) -> None:
@@ -113,7 +122,7 @@ class StatusModule(MQTTModule):
             self.pixels[i] = color
             self.pixels.show()
             time.sleep(DELAY)
-            self.pixels.fill(0)
+            self.pixels.fill(CLR_BLACK)
 
     def status_check(self) -> None:
         if not self.initialized:
