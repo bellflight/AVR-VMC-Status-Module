@@ -2,7 +2,7 @@ import itertools
 import signal
 import subprocess
 import time
-from typing import Any, Dict, Tuple
+from typing import Any
 
 import board
 import neopixel_spi as neopixel
@@ -10,25 +10,7 @@ import paho.mqtt.client as mqtt
 from bell.avr.mqtt.client import MQTTModule
 from loguru import logger
 
-NUM_PIXELS = 12
-PIXEL_ORDER = neopixel.GRB
-
-# RGB
-COLORS = (0xFF0000, 0x00FF00, 0x0000FF)
-CLR_PURPLE = 0x6A0DAD
-CLR_AQUA = 0x00FFFF
-CLR_ORANGE = 0xF5A506
-CLR_YELLOW = 0xC1E300
-CLR_BLUE = 0x001EE3
-CLR_BLACK = 0x000000
-
-VIO_LED = 1
-PCC_LED = 2
-THERMAL_LED = 3
-FCC_LED = 4
-APRIL_LED = 5
-
-DELAY = 0.1
+import config
 
 
 class StatusModule(MQTTModule):
@@ -47,7 +29,10 @@ class StatusModule(MQTTModule):
 
         self.spi = board.SPI()
         self.pixels = neopixel.NeoPixel_SPI(
-            self.spi, NUM_PIXELS, pixel_order=PIXEL_ORDER, auto_write=False
+            self.spi,
+            config.NUM_PIXELS,
+            pixel_order=config.PIXEL_ORDER,
+            auto_write=False,
         )
 
         # set up handling for turning off the lights on docker shutdown
@@ -89,15 +74,7 @@ class StatusModule(MQTTModule):
         self.pixels.show()
 
     def check_status(self, topic: str) -> None:
-        lookup: Dict[str, Tuple[int, int]] = {
-            "avr/vio": (VIO_LED, CLR_PURPLE),
-            "avr/pcm": (PCC_LED, CLR_AQUA),
-            "avr/fcm": (FCC_LED, CLR_ORANGE),
-            "avr/thermal": (THERMAL_LED, CLR_BLUE),
-            "avr/apriltags": (APRIL_LED, CLR_YELLOW),
-        }
-
-        for key, value in lookup.items():
+        for key, value in config.STATUS_LOOKUP.items():
             if topic.startswith(key):
                 self.light_up(*value)
 
@@ -105,24 +82,24 @@ class StatusModule(MQTTModule):
         """
         Set all LEDs to red
         """
-        for i in range(NUM_PIXELS):
-            self.pixels[i] = COLORS[0]
+        for i in range(config.NUM_PIXELS):
+            self.pixels[i] = config.RGB_COLORS[0]
         self.pixels.show()
 
     def all_off(self) -> None:
         """
         Turn off all LEDs
         """
-        for i in range(NUM_PIXELS):
-            self.pixels[i] = CLR_BLACK
+        for i in range(config.NUM_PIXELS):
+            self.pixels[i] = config.COLOR_BLACK
         self.pixels.show()
 
     def light_status(self, payload: Any) -> None:
-        for color, i in itertools.product(COLORS, range(NUM_PIXELS)):
+        for color, i in itertools.product(config.RGB_COLORS, range(config.NUM_PIXELS)):
             self.pixels[i] = color
             self.pixels.show()
-            time.sleep(DELAY)
-            self.pixels.fill(CLR_BLACK)
+            time.sleep(config.DELAY)
+            self.pixels.fill(config.COLOR_BLACK)
 
     def status_check(self) -> None:
         if not self.initialized:
@@ -134,7 +111,9 @@ class StatusModule(MQTTModule):
             result = subprocess.check_output(cmd, stderr=subprocess.STDOUT).decode(
                 "utf-8"
             )
-            self.pixels[0] = COLORS[1] if "MAXN" in result else COLORS[0]
+            self.pixels[0] = (
+                config.RGB_COLORS[1] if "MAXN" in result else config.RGB_COLORS[0]
+            )
             self.pixels.show()
         except subprocess.CalledProcessError as e:
             logger.exception(

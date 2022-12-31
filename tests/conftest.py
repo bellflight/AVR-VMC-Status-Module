@@ -16,6 +16,7 @@ def status_module(mocker: MockerFixture) -> StatusModule:
     sys.modules["board"] = mocker.MagicMock()
 
     # patch the send message function
+    sys.path.append("src")
     mocker.patch("src.status.StatusModule.send_message")
 
     # create module object
@@ -24,6 +25,6 @@ def status_module(mocker: MockerFixture) -> StatusModule:
     module = StatusModule()
 
     # mock the neopixels module
-    mocker.patch.object(module, "pixels", autospec=True)
+    mocker.patch.object(module, "pixels")
 
     return module
