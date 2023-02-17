@@ -20,12 +20,14 @@ class StatusModule(MQTTModule):
         self.initialized = False
 
         self.topic_map = {
-            "avr/status/light/pcm": self.light_status,
-            "avr/status/light/vio": self.light_status,
-            "avr/status/light/apriltags": self.light_status,
-            "avr/status/light/fcm": self.light_status,
-            "avr/status/light/thermal": self.light_status,
+            "avr/status/led/pcm": self.light_status,
+            "avr/status/led/vio": self.light_status,
+            "avr/status/led/apriltags": self.light_status,
+            "avr/status/led/fcm": self.light_status,
+            "avr/status/led/thermal": self.light_status,
         }
+
+        self.subscribe_to_all_topics = True
 
         self.spi = board.SPI()
         self.pixels = neopixel.NeoPixel_SPI(
@@ -48,13 +50,6 @@ class StatusModule(MQTTModule):
         # run this function on every message recieved before processing topic map
         self.check_status(msg.topic)
         super().on_message(client, userdata, msg)
-
-    def on_connect(
-        self, client: mqtt.Client, userdata: Any, flags: dict, rc: int
-    ) -> None:
-        super().on_connect(client, userdata, flags, rc)
-        # additionally subscribe to all topics
-        client.subscribe("avr/#")
 
     def set_cpu_status(self) -> None:
         # Initialize power mode status
@@ -94,7 +89,7 @@ class StatusModule(MQTTModule):
             self.pixels[i] = config.COLOR_BLACK
         self.pixels.show()
 
-    def light_status(self, payload: Any) -> None:
+    def light_status(self) -> None:
         for color, i in itertools.product(config.RGB_COLORS, range(config.NUM_PIXELS)):
             self.pixels[i] = color
             self.pixels.show()
