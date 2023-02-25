@@ -5,12 +5,11 @@ import time
 from typing import Any
 
 import board
-import neopixel_spi as neopixel
-import paho.mqtt.client as mqtt
-from bell.avr.mqtt.client import MQTTModule
-from loguru import logger
-
 import config
+import neopixel_spi as neopixel
+import paho.mqtt.client as paho_mqtt
+from bell.avr.mqtt.module import MQTTModule
+from loguru import logger
 
 
 class StatusModule(MQTTModule):
@@ -19,7 +18,7 @@ class StatusModule(MQTTModule):
 
         self.initialized = False
 
-        self.topic_map = {
+        self.topic_callbacks = {
             "avr/status/led/pcm": self.light_status,
             "avr/status/led/vio": self.light_status,
             "avr/status/led/apriltags": self.light_status,
@@ -45,7 +44,7 @@ class StatusModule(MQTTModule):
         self.red_status_all()
 
     def on_message(
-        self, client: mqtt.Client, userdata: Any, msg: mqtt.MQTTMessage
+        self, client: paho_mqtt.Client, userdata: Any, msg: paho_mqtt.MQTTMessage
     ) -> None:
         # run this function on every message recieved before processing topic map
         self.check_status(msg.topic)
