@@ -323,13 +323,13 @@ files = [
 
 [[package]]
 name = "jetson-gpio"
-version = "2.0.21"
+version = "2.1.0"
 description = "A module to control Jetson GPIO channels"
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "Jetson.GPIO-2.0.21.tar.gz", hash = "sha256:8a9de28cc06534cfac1a8272c66bdce6a8e65755e123c8813b94e504261ef8af"},
+    {file = "Jetson.GPIO-2.1.0.tar.gz", hash = "sha256:e0ea4fd0e9832560917fa85ff20781a996f3ff995d28443f382b7be3aea2f53f"},
 ]
 
 [[package]]
@@ -677,4 +677,4 @@ dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.12"
-content-hash = "0c07cfa63d0ae9ab8b2beae99fa968759fd5ca7d5519a45dc7d7d0a820f7416a"
+content-hash = "0beddb66ea447a808bf70a0aa51810fb55e628b0ca11cd4ed4950c6d8e871733"
