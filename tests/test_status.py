@@ -61,7 +61,7 @@ def test_light_status(mocker: MockerFixture, status_module: StatusModule) -> Non
     # for speed
     mocker.patch("time.sleep")
 
-    status_module.light_status(None)
+    status_module.light_status()
 
     for led in range(config.NUM_PIXELS):
         status_module.pixels.__setitem__.assert_any_call(led, config.COLOR_RED)
