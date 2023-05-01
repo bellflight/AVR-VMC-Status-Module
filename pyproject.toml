@@ -13,7 +13,7 @@
     loguru                              = "^0.6.0"
     bell-avr-libraries                  = "0.2.0a0"
     # https://github.com/NVIDIA/jetson-gpio/issues/79
-    jetson-gpio                    = { version = "2.0.21", markers = "sys_platform == 'linux'" }
+    jetson-gpio                    = { version = "2.1.1", markers = "sys_platform == 'linux'" }
 
 [tool.poetry.group.dev.dependencies]
     pre-commit  = "^3.2.2"
