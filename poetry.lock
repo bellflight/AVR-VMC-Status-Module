@@ -36,14 +36,14 @@ adafruit-circuitpython-typing = "*"
 
 [[package]]
 name = "adafruit-circuitpython-neopixel-spi"
-version = "1.0.6"
+version = "1.0.7"
 description = "SPI driven CircuitPython driver for neopixels."
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "adafruit-circuitpython-neopixel-spi-1.0.6.tar.gz", hash = "sha256:715eb11c76345d66a8e3e6a11fee26c9cc0ac3b83b5c41c5ef9b7d9ea2acbfff"},
-    {file = "adafruit_circuitpython_neopixel_spi-1.0.6-py3-none-any.whl", hash = "sha256:6e1210dd2599c20c292bd5957492a3d90905e42cfcd8de3709d09423da180980"},
+    {file = "adafruit-circuitpython-neopixel-spi-1.0.7.tar.gz", hash = "sha256:e7f41f092ff6ad20a6c21395f1bf17b92395adb003f3ff56b550f83d93385a2f"},
+    {file = "adafruit_circuitpython_neopixel_spi-1.0.7-py3-none-any.whl", hash = "sha256:9677f8374033c3a8e22a631838b585b17164b18dac18dd84cc307026e4d0e110"},
 ]
 
 [package.dependencies]
@@ -712,4 +712,4 @@ dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.12"
-content-hash = "35535473eda764889eed9ab4102049443d3cce8d5aea14edde2b8c838c013134"
+content-hash = "9d227a029b29ce79214fec5d5d9ee6c3d495772487a8579d0dae7ce0626cfe4c"
