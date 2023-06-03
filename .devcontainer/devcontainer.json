@@ -3,5 +3,16 @@
 	"build": {
 		"context": "..",
 		"dockerfile": "../Dockerfile"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"actboy168.tasks",
+				"ms-python.python",
+				"ms-azuretools.vscode-docker",
+				"redhat.vscode-yaml",
+				"tamasfe.even-better-toml"
+			]
+		}
 	}
 }
