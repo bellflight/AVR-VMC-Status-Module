@@ -11,7 +11,7 @@
     python                              = ">=3.9,<3.12"
     adafruit-circuitpython-neopixel-spi = "1.0.7"
     loguru                              = "0.7.0"
-    bell-avr-libraries                  = "0.2.0a2"
+    bell-avr-libraries                  = "0.2.0a3"
     # https://github.com/NVIDIA/jetson-gpio/issues/79
     jetson-gpio                    = { version = "!=2.1.0", markers = "sys_platform == 'linux'" }
 
