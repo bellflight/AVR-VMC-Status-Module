@@ -122,7 +122,7 @@ class StatusModule(MQTTModule):
             time.sleep(1)
         self.all_off()
 
-    def exit_gracefully(self, *args) -> None:
+    def exit_gracefully(self, *args: Any) -> None:
         self.run_status_check = False
 
 
