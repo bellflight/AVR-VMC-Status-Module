@@ -8,10 +8,10 @@
     authors     = ["Nathan Vaughn <nvaughn51@gmail.com>"]
 
 [tool.poetry.dependencies]
-    python                              = ">=3.9,<3.12"
+    python                              = ">=3.9,<3.13"
     adafruit-circuitpython-neopixel-spi = "1.0.8"
     loguru                              = "0.7.2"
-    bell-avr-libraries                  = "0.2.0a6"
+    bell-avr-libraries                  = "0.2.0a7"
     # https://github.com/NVIDIA/jetson-gpio/issues/79
     jetson-gpio = { version = "!=2.1.0", markers = "sys_platform == 'linux'" }
 
