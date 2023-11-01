@@ -26,6 +26,3 @@
     venvPath                   = "."
     venv                       = ".venv"
     reportMissingParameterType = true
-
-[tool.ruff]
-    ignore = ["E501"]
