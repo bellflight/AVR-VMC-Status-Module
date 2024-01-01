@@ -34,13 +34,13 @@ adafruit-circuitpython-typing = "*"
 
 [[package]]
 name = "adafruit-circuitpython-neopixel-spi"
-version = "1.0.8"
+version = "1.0.9"
 description = "SPI driven CircuitPython driver for neopixels."
 optional = false
 python-versions = "*"
 files = [
-    {file = "adafruit-circuitpython-neopixel-spi-1.0.8.tar.gz", hash = "sha256:d0d02d39100e9840ee35dd5bccf3fde101a91660d7665abd808ee9aa1359d0e5"},
-    {file = "adafruit_circuitpython_neopixel_spi-1.0.8-py3-none-any.whl", hash = "sha256:30e269cdcd9557ca2a090c3bbcb017caf7344ff9db47c13f6ada63297068b6b5"},
+    {file = "adafruit-circuitpython-neopixel-spi-1.0.9.tar.gz", hash = "sha256:a44c0693cb69e25f3c0680bb6b7786ca94c34f07ef0e388b459690bf3b9d15fe"},
+    {file = "adafruit_circuitpython_neopixel_spi-1.0.9-py3-none-any.whl", hash = "sha256:7fcef822b0ab9c931394dc68a1de76a2b40a7531cc1f68c0d05d02d5876c253e"},
 ]
 
 [package.dependencies]
@@ -441,13 +441,13 @@ testing = ["pytest", "pytest-benchmark"]
 
 [[package]]
 name = "pre-commit"
-version = "3.5.0"
+version = "3.6.0"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 files = [
-    {file = "pre_commit-3.5.0-py2.py3-none-any.whl", hash = "sha256:841dc9aef25daba9a0238cd27984041fa0467b4199fc4852e27950664919f660"},
-    {file = "pre_commit-3.5.0.tar.gz", hash = "sha256:5804465c675b659b0862f07907f96295d490822a450c4c40e747d0b1c6ebcb32"},
+    {file = "pre_commit-3.6.0-py2.py3-none-any.whl", hash = "sha256:c255039ef399049a5544b6ce13d135caba8f2c28c3b4033277a788f434308376"},
+    {file = "pre_commit-3.6.0.tar.gz", hash = "sha256:d30bad9abf165f7785c15a21a1f46da7d0677cb00ee7ff4c579fd38922efe15d"},
 ]
 
 [package.dependencies]
@@ -625,13 +625,13 @@ cp2110 = ["hidapi"]
 
 [[package]]
 name = "pytest"
-version = "7.4.3"
+version = "7.4.4"
 description = "pytest: simple powerful testing with Python"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pytest-7.4.3-py3-none-any.whl", hash = "sha256:0d009c083ea859a71b76adf7c1d502e4bc170b80a8ef002da5806527b9591fac"},
-    {file = "pytest-7.4.3.tar.gz", hash = "sha256:d989d136982de4e3b29dabcc838ad581c64e8ed52c11fbe86ddebd9da0818cd5"},
+    {file = "pytest-7.4.4-py3-none-any.whl", hash = "sha256:b090cdf5ed60bf4c45261be03239c2c1c22df034fbffe691abe93cd80cea01d8"},
+    {file = "pytest-7.4.4.tar.gz", hash = "sha256:2cf0005922c6ace4a3e2ec8b4080eb0d9753fdc93107415332f50ce9e7994280"},
 ]
 
 [package.dependencies]
@@ -825,4 +825,4 @@ dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.13"
-content-hash = "3e94d18b0f5f937678084359fc01217d80816e131aba03f79a7faa30685bd8f4"
+content-hash = "768048cbe1edb0a9428a293767754d6493f7fbb13c8c329dbd0ebb4096506b06"
